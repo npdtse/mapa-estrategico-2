@@ -1,0 +1,1593 @@
+/* === [CAPÍTULO 1] CONFIGURAÇÕES DE TEMA E VARIÁVEIS === */
+
+/* --- [Seção] Variáveis Globais e Temas (Modo Claro) --- */
+:root {
+  --bg: #F0F4F8;
+  --bg2: #E1EAF2;
+  --surface: #FFFFFF;
+  --surface2: #F8FAFC;
+  
+  --primary: #0073E6; 
+  --primary-light: #4D9FFF; 
+  --primary-faded: #E6F0FA; 
+  
+  --text: #1A2733;
+  --text2: #4A5B6E;
+  --text3: #7D8FA3;
+  --border: #CDE0F5;
+  
+  --shadow: 0 4px 12px rgba(0, 115, 230, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 115, 230, 0.15);
+  --radius: 12px;
+  --transition: 200ms cubic-bezier(.4,0,.2,1);
+  --grid-unit: 4px;
+  --sidebar-w: 260px;
+  
+  --phase1: #6F42C1; /* Resultados / Roxo */
+  --phase2: #0073E6; /* Processos Internos / Azul */
+  --phase3: #FD7E14; /* Aprendizado e Crescimento / Laranja */
+}
+
+/* --- [Seção] Ajustes de Cores (Modo Escuro) --- */
+[data-theme="dark"] {
+  --bg: #0F172A;
+  --bg2: #1E293B;
+  --surface: #1E293B;
+  --surface2: #273447;
+  
+  --primary: #3399FF;
+  --primary-light: #66B2FF;
+  --primary-faded: #132338;
+  
+  --text: #F1F5F9;
+  --text2: #CBD5E1;
+  --text3: #94A3B8;
+  --border: #334155;
+  
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+
+/* === [CAPÍTULO 2] ESTILOS GLOBAIS === */
+
+/* --- [Seção] Reset e Tipografia --- */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+  font-size: 106.25%; /* Eleva a base raiz rem de 16px para 17px (~6.25% de escala global) */
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;     /* Aumentado para 17px para elementos herdados diretos */
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+}
+
+
+/* === [CAPÍTULO 3] LAYOUT PRINCIPAL === */
+
+/* --- [Seção] Cabeçalho institucional (Header) --- */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 16px rgba(0, 115, 230, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background var(--transition);
+}
+
+[data-theme="dark"] header {
+  background: var(--surface);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 14px; 
+}
+
+.header-seal {
+  width: 54px;                 /* Ampliado para nivelar visualmente com a altura total das duas linhas de texto */
+  height: 54px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-shrink: 0;              /* Previne que o flexbox achate o selo lateralmente */
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.header-seal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+[data-theme="dark"] .header-seal { 
+  background: transparent; 
+  box-shadow: none;
+} 
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;                    /* Controla o espaçamento estrito de uma linha para a outra */
+}
+
+.header-text h1 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 19px; 
+  font-weight: 700; 
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  margin: 0;                   /* Reseta as margens do navegador */
+  line-height: 1.15;           /* Altura de linha otimizada para caixa alta */
+}
+
+.header-text p { 
+  font-size: 13px; 
+  opacity: .85; 
+  letter-spacing: .6px; 
+  text-transform: uppercase; 
+  margin: 0;                   /* Reseta as margens do navegador */
+  line-height: 1.2;            /* Altura de linha otimizada para caixa alta */
+}
+
+.header-actions { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.btn-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; 
+  border-radius: 8px;
+  padding: 8px 16px; 
+  font-size: 13px; 
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  gap: 6px;
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+[data-theme="dark"] .btn-toggle {
+  background: var(--bg2);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-toggle:hover { 
+  background: rgba(255,255,255,0.25); 
+}
+
+[data-theme="dark"] .btn-toggle:hover {
+  background: var(--primary-faded);
+  color: var(--primary);
+}
+
+/* --- [Seção] Estrutura Centrada --- */
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+  transition: background var(--transition), border var(--transition);
+}
+
+[data-theme="dark"] .app-body {
+  border-left-color: var(--border);
+  border-right-color: var(--border);
+}
+
+
+/* === [CAPÍTULO 4] BARRA LATERAL PRIMÁRIA (TAB SWITCHER) === */
+
+.sidebar-primary {
+  width: var(--sidebar-w);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 24px 14px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  transition: background var(--transition), border var(--transition);
+}
+
+.sidebar-label {
+  font-size: 12px; 
+  font-weight: 700; 
+  letter-spacing: 1.2px;
+  text-transform: uppercase; 
+  color: var(--primary);
+  padding: 0 10px; 
+  margin-bottom: 4px;
+}
+
+[data-theme="dark"] .sidebar-label { 
+  color: var(--primary-light); 
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.audit-tab {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  color: var(--text2);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  position: relative;
+  transition: all var(--transition);
+  white-space: normal;
+  line-height: 1.4;
+}
+
+/* Indicador de barra lateral elástica dinâmica */
+.audit-tab::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 25%;
+  height: 50%;
+  width: 3.5px;
+  background: var(--primary);
+  border-radius: 4px;
+  opacity: 0;
+  transform: scaleY(0.3);
+  transition: opacity 250ms cubic-bezier(.4, 0, .2, 1), 
+              transform 250ms cubic-bezier(.34, 1.56, .64, 1),
+              background 250ms;
+}
+
+[data-theme="dark"] .audit-tab::after {
+  background: var(--primary-light);
+}
+
+.audit-tab.active::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.audit-tab:hover {
+  background: var(--bg2);
+  color: var(--text);
+}
+
+.audit-tab.active {
+  background: var(--primary-faded);
+  border-color: var(--primary-light);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .audit-tab.active {
+  color: var(--primary-light);
+}
+
+
+/* === [CAPÍTULO 5] ÁREA DE CONTEÚDO PRINCIPAL === */
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+  background: var(--bg);
+  transition: background var(--transition);
+}
+
+.tab-content {
+  display: none;
+  opacity: 0;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* --- [Seção] Títulos e Parágrafos --- */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.subsection-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] .subsection-title {
+  color: var(--primary-light);
+}
+
+.section-paragraph {
+  color: var(--text2);
+  font-size: 1.05rem;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+
+/* --- [Seção] Card de Adaptabilidade Normativa --- */
+.adaptability-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border); /* Removida a borda amarela grossa de 6px por um contorno periférico fino */
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+  transition: background var(--transition), border var(--transition);
+  max-width: 900px;
+}
+
+.adaptability-card__icon-wrapper {
+  color: #C59B27;              /* Refinado o amarelo para um tom dourado corporativo sóbrio */
+  background: rgba(197, 155, 39, 0.08); /* Adicionado círculo de destaque translúcido */
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.adaptability-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.adaptability-card__paragraph {
+  font-size: 0.95rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* --- [Seção] Diagrama de Cascateamento --- */
+.diagram-block {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: background var(--transition), border var(--transition);
+  max-width: 900px;
+}
+
+.cascade-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cascade-diagram__step {
+  width: 100%;
+}
+
+.cascade-diagram__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text3);
+  margin-bottom: 6px;
+}
+
+.cascade-diagram__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow);
+}
+
+.tse-card {
+  background: var(--primary-faded);
+  color: var(--primary);
+  border: 1.5px solid var(--primary-light); /* Removida a borda lateral grossa de 5px */
+}
+
+[data-theme="dark"] .tse-card {
+  color: var(--primary-light);
+}
+
+/* --- Estilos de Estrutura e Margem dos Cards do Diagrama --- */
+.cascade-diagram__card {
+  margin-bottom: 12px;
+  align-items: flex-start; /* Alinhamento ao topo para comportar o texto com tags */
+}
+
+.cascade-diagram__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.cascade-diagram__card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+/* --- Cartões do Diagrama por Perspectiva (Modo Claro) --- */
+
+/* Resultados (Roxo) */
+.cascade-diagram__card--resultados {
+  background: rgba(111, 66, 193, 0.06);
+  color: #5527a4;
+  border: 1.5px solid var(--phase1); /* Substituída a borda de 5px por contorno de 1.5px */
+}
+.cascade-diagram__card--resultados .cascade-diagram__card-tag {
+  color: var(--phase1);
+}
+
+/* Processos Internos (Azul) */
+.cascade-diagram__card--processos {
+  background: var(--primary-faded);
+  color: var(--primary);
+  border: 1.5px solid var(--phase2); /* Substituída a borda de 5px por contorno de 1.5px */
+}
+.cascade-diagram__card--processos .cascade-diagram__card-tag {
+  color: var(--phase2);
+}
+
+/* Aprendizado e Crescimento (Laranja) */
+.cascade-diagram__card--aprendizado {
+  background: rgba(253, 126, 20, 0.06);
+  color: #c45700;
+  border: 1.5px solid var(--phase3); /* Substituída a borda de 5px por contorno de 1.5px */
+}
+.cascade-diagram__card--aprendizado .cascade-diagram__card-tag {
+  color: var(--phase3);
+}
+
+
+/* === [CAPÍTULO 6] GRADE DE IDENTIDADE (MISSÃO, VISÃO, VALORES) === */
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+@media (min-width: 1024px) {
+  .identity-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.identity-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1.5px solid var(--border); /* Removida a borda de 6px do topo, aplicando contorno fino */
+  transition: transform var(--transition), background var(--transition), border var(--transition), box-shadow var(--transition);
+}
+
+.identity-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-light); /* Acendimento suave e profissional da borda no hover */
+  box-shadow: var(--shadow-lg);
+}
+
+/* Cartão de Identidade Unificado sob a Cor Corporativa */
+.identity-card--primary { 
+  border-color: var(--border); 
+}
+
+.identity-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.identity-card__icon {
+  font-size: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary-faded); /* Círculo de fundo translúcido para compensar a perda da borda grossa */
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transition), color var(--transition);
+}
+
+.identity-card--primary .identity-card__icon { 
+  color: var(--primary); 
+  background: var(--primary-faded);
+}
+
+.identity-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.identity-card__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text2);
+}
+
+/* --- [Seção] Lista de Valores Sóbria --- */
+.identity-card__list {
+  list-style: none;
+}
+
+.identity-card__list li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 4px;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border var(--transition);
+}
+
+.identity-card__list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.identity-card__number {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  background-color: var(--bg);
+  color: var(--primary); /* Sincronizado para usar a cor institucional */
+  font-weight: 700;
+  font-size: 0.75rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  margin-top: 2px;
+  transition: background var(--transition);
+}
+
+.identity-card__value-name {
+  grid-column: 2;
+  grid-row: 1;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.identity-card__value-desc {
+  grid-column: 2;
+  grid-row: 2;
+  color: var(--text2);
+  font-size: 0.9rem;
+}
+
+
+/* === [CAPÍTULO 7] MAPA ESTRATÉGICO INTERATIVO (BSC) === */
+
+.bsc-panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: background var(--transition), border var(--transition);
+}
+
+.bsc-perspective {
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--border);
+  transition: background var(--transition), border var(--transition);
+}
+
+/* Tons de fundo semânticos e translúcidos para cada perspectiva (Modo Claro) */
+.bsc-perspective:nth-child(1) { background: rgba(111, 66, 193, 0.12); } /* Resultados (Roxo) */
+.bsc-perspective:nth-child(2) { background: rgba(0, 115, 230, 0.12); }  /* Processos Internos (Azul) */
+.bsc-perspective:nth-child(3) { background: rgba(253, 126, 20, 0.15); }  /* Aprendizado e Crescimento (Laranja) */
+
+/* Tons de fundo semânticos e translúcidos adaptados para o Modo Escuro */
+[data-theme="dark"] .bsc-perspective:nth-child(1) { background: rgba(111, 66, 193, 0.08); }
+[data-theme="dark"] .bsc-perspective:nth-child(2) { background: rgba(51, 153, 255, 0.06); }
+[data-theme="dark"] .bsc-perspective:nth-child(3) { background: rgba(253, 126, 20, 0.08); }
+
+.bsc-perspective__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.bsc-perspective__title--resultados { color: var(--phase1); }
+.bsc-perspective__title--processos { color: var(--phase2); }
+.bsc-perspective__title--aprendizado { color: var(--phase3); }
+
+.bsc-perspective__objectives {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bsc-perspective__objectives--grid,
+.bsc-perspective__objectives--grid-two {
+  display: grid;
+  grid-template-columns: 1fr; /* Mantém 1 coluna de forma global, forçando o empilhamento vertical */
+  gap: 12px;
+  align-items: stretch;
+}
+
+/* O bloco @media (min-width: 1024px) que dividia as colunas de objetivos foi removido para unificar o alinhamento em todas as resoluções de desktop. */
+
+/* --- [Seção] Objective Cards (Split Compartment Style) --- */
+.objective-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; /* Estica verticalmente no grid */
+  padding: 0;   /* Removido o padding do cartão geral para segmentar compartimentos */
+  overflow: hidden;
+  /* Transição física elástica simulando efeito de mola de alta fidelidade */
+  transition: border 350ms cubic-bezier(.34, 1.56, .64, 1), 
+              transform 350ms cubic-bezier(.34, 1.56, .64, 1), 
+              box-shadow 350ms cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.objective-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.objective-card__body {
+  padding: 20px 22px 14px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1; /* Faz a área de texto crescer para empurrar a lista de indicadores ao fundo */
+}
+
+.objective-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.objective-card__num {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.objective-card__icon {
+  font-size: 15px;
+  color: var(--text3);
+  transition: color var(--transition);
+}
+
+/* Iluminação de cor do ícone no hover do card */
+.bsc-perspective:nth-child(1) .objective-card:hover .objective-card__icon { color: var(--phase1); }
+.bsc-perspective:nth-child(2) .objective-card:hover .objective-card__icon { color: var(--phase2); }
+.bsc-perspective:nth-child(3) .objective-card:hover .objective-card__icon { color: var(--phase3); }
+
+.objective-card__text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.objective-card__divider {
+  border-top: 1px dashed var(--border);
+  width: 100%;
+  transition: border var(--transition);
+}
+
+.objective-card__indicators-list {
+  background: var(--surface2);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: background var(--transition);
+}
+
+.objective-card__indicator-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 13.5px;
+  text-align: left;
+  background: transparent;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-family: 'Source Sans 3', sans-serif;
+  transition: background var(--transition), color var(--transition);
+}
+
+.objective-card__indicator-row:last-child {
+  border-bottom: none;
+}
+
+.objective-card__indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+/* Bolinhas dinâmicas de acordo com as cores de fase/perspectiva */
+.bsc-perspective:nth-child(1) .objective-card__indicator-dot { background: var(--phase1); }
+.bsc-perspective:nth-child(2) .objective-card__indicator-dot { background: var(--phase2); }
+.bsc-perspective:nth-child(3) .objective-card__indicator-dot { background: var(--phase3); }
+
+.objective-card__indicator-name {
+  color: var(--text2);
+  font-weight: 500;
+  line-height: 1.35;
+  flex-grow: 1;
+  transition: color var(--transition);
+}
+
+.objective-card__indicator-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+[data-theme="dark"] .objective-card__indicator-btn {
+  background: var(--bg2);
+  color: var(--primary-light);
+}
+
+.objective-card__indicator-btn i {
+  font-size: 9px;
+  transition: transform var(--transition);
+}
+
+/* Microinterações e efeitos de Hover estéticos (Artist Protocol) */
+.objective-card__indicator-row:hover {
+  background: var(--primary-faded);
+}
+
+.objective-card__indicator-row:hover .objective-card__indicator-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.objective-card__indicator-row:hover .objective-card__indicator-btn {
+  background: var(--primary);
+  color: #fff;
+}
+
+.objective-card__indicator-row:hover .objective-card__indicator-btn i {
+  transform: translateX(2px);
+}
+
+.objective-card__indicator-row:hover .objective-card__indicator-dot {
+  transform: scale(1.3);
+}
+
+
+/* === [CAPÍTULO 8] FICHA TÉCNICA LATERAL (DRAWER) === */
+
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 30, 60, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  opacity: 0;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 750px;
+  height: 100%;
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  z-index: 201;
+  overflow-y: auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+  transition: right var(--transition), background var(--transition), border var(--transition);
+}
+
+.drawer__close-btn {
+  align-self: flex-end;
+  background: var(--bg2);
+  border: none;
+  cursor: pointer;
+  color: var(--text2);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.drawer__close-btn:hover {
+  background: var(--primary-faded);
+  color: var(--primary);
+  transform: rotate(90deg);
+}
+
+/* --- [Seção] Elementos da Ficha Técnica --- */
+.tech-sheet__title {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 24px;
+  line-height: 1.3;
+  border-bottom: 2px solid var(--accent, #FFC107);
+  padding-bottom: 8px;
+}
+
+.tech-sheet__indicator {
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1.5px solid var(--border);
+  scroll-margin-top: 76px;    /* Cria uma margem de segurança de rolagem para que as etiquetas sticky não cubram o título do indicador */
+  transition: background var(--transition), border var(--transition);
+}
+
+/* Ativação do efeito de brilho e pulsação suave ao ancorar indicador na Ficha Técnica (Artist Dynamic) */
+@keyframes indicatorHighlight {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(0, 115, 230, 0.4); 
+    background-color: var(--primary-faded); 
+    border-color: var(--primary-light);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(0, 115, 230, 0); 
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(0, 115, 230, 0); 
+  }
+}
+
+.tech-sheet__indicator.highlight-active {
+  animation: indicatorHighlight 1.5s cubic-bezier(.25, .8, .25, 1);
+}
+
+.tech-sheet__indicator-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+[data-theme="dark"] .tech-sheet__indicator-title {
+  color: var(--primary-light);
+}
+
+.tech-sheet__indicator-meta {
+  display: inline-block;
+  background: var(--primary-faded);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 8px;
+  transition: background var(--transition), border var(--transition);
+}
+
+.tech-sheet__section {
+  border-bottom: 1px solid var(--border); /* Linha discreta divisória */
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  transition: border var(--transition);
+}
+
+.tech-sheet__section:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 16px;
+}
+
+.tech-sheet__section-title {
+  font-size: 14px; /* Aumentado para 14px para melhorar a legibilidade e contraste técnico */
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text2); /* Ajustado para var(--text2) garantindo contraste ideal */
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.tech-sheet__section-text {
+  font-size: 0.95rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* --- [Seção] Tabela de Metas em Fichas --- */
+.tech-sheet__goals-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 12px;
+  border: 1px solid var(--border);
+  margin-top: 6px;
+  transition: background var(--transition), border var(--transition);
+}
+
+.tech-sheet__goal-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-sheet__goal-year {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text3);
+}
+
+.tech-sheet__goal-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+/* --- [Seção] Iniciativas Integradas --- */
+.tech-sheet__initiatives {
+  background: var(--primary-faded);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--secondary);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 16px;
+  transition: background var(--transition), border var(--transition);
+}
+
+.tech-sheet__initiative-item {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.tech-sheet__initiative-item:last-child {
+  margin-bottom: 0;
+}
+
+.tech-sheet__initiative-item::before {
+  content: "•";
+  color: var(--secondary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+
+/* === [CAPÍTULO 9] MATURIDADE & QUALIDADE === */
+
+.quality-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+@media (min-width: 1024px) {
+  .quality-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.quality-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border var(--transition);
+}
+
+.quality-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.quality-card__icon {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+[data-theme="dark"] .quality-card__icon {
+  color: var(--primary-light);
+}
+
+.quality-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.quality-card__paragraph {
+  font-size: 0.95rem;
+  color: var(--text2);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* --- [Seção] Termômetro IA-CM (Timeline) --- */
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.roadmap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 2px;
+  height: 100%;
+  background-color: var(--border);
+  z-index: 1;
+}
+
+.roadmap__item {
+  position: relative;
+  display: flex;
+  gap: 16px;
+}
+
+.roadmap__status {
+  position: absolute;
+  left: -29px;
+  top: 2px;
+  background-color: var(--surface);
+  z-index: 2;
+  border-radius: 50%;
+  transition: background var(--transition);
+}
+
+.roadmap__item.completed .roadmap__status {
+  color: #10B981;
+}
+
+.roadmap__item.active .roadmap__status {
+  background-color: var(--primary);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  left: -20px;
+  top: 5px;
+  outline: 4px solid var(--primary-faded);
+}
+
+.roadmap__pulse {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--primary);
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+.roadmap__item.locked .roadmap__status {
+  color: var(--text3);
+  opacity: 0.5;
+}
+
+.roadmap__content {
+  background-color: var(--bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--border);
+  flex-grow: 1;
+  transition: background var(--transition), border var(--transition);
+}
+
+.roadmap__item.active .roadmap__content {
+  background-color: var(--surface);
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.roadmap__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.roadmap__text {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.4;
+}
+
+.roadmap__progress-bar {
+  background-color: var(--bg);
+  height: 16px;
+  border-radius: 8px;
+  margin-top: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: background var(--transition);
+}
+
+.roadmap__progress {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadmap__meta-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 8px;
+}
+
+[data-theme="dark"] .roadmap__meta-label {
+  color: var(--primary-light);
+}
+
+/* --- [Seção] Gráfico de Radar --- */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 260px;
+  margin: 0 auto 24px auto;
+  overflow: hidden;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+}
+
+.dimensions-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dimension-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  row-gap: 2px;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+  transition: border var(--transition);
+}
+
+.dimension-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.dimension-item__dot {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  align-self: start;
+  margin-top: 5px;
+}
+
+.dimension-item__dot--satisfacao { background-color: #36A2EB; }
+.dimension-item__dot--comunicacao { background-color: #FF6384; }
+.dimension-item__dot--eficiencia { background-color: #FFCE56; }
+.dimension-item__dot--efetividade { background-color: #4BC120; }
+
+.dimension-item__name {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.dimension-item__desc {
+  grid-column: 2;
+  grid-row: 2;
+  color: var(--text2);
+  font-size: 0.85rem;
+}
+
+
+/* === [CAPÍTULO 10] RESPONSIVIDADE E ANIMAÇÕES === */
+
+.mobile-only { display: none; }
+
+@media (max-width: 850px) {
+  .desktop-only { display: none; }
+  .mobile-only { display: flex; }
+  
+  /* Adaptação dinâmica do cabeçalho no mobile para evitar cortes de texto no topo */
+  header {
+    height: auto;
+    min-height: 64px;
+    padding: 10px 16px;
+  }
+
+  .header-brand {
+    gap: 10px;                 /* Estreita o distanciamento horizontal no mobile */
+  }
+
+  .header-seal {
+    width: 54px;               /* Proporção mobile ideal que destaca a logo */
+    height: 54px;
+  }
+
+  .header-text {
+    gap: 1px;                  /* Estreita ainda mais a distância de linha no mobile */
+  }
+
+  .header-text h1 {
+    font-size: 15px;           /* Tamanho de fonte mobile otimizado */
+    line-height: 1.1;
+  }
+
+  .header-text p {
+    font-size: 10.5px;         /* Tamanho de fonte mobile otimizado */
+    line-height: 1.15;
+  }
+
+  /* Estrutura empilhada */
+  .app-body {
+    flex-direction: column;
+    border-left: none;
+    border-right: none;
+    max-width: 100%;
+    padding-bottom: 60px;
+  }
+  
+  /* Oculta a barra lateral de texto com prioridade absoluta, ativando o menu inferior de ícones */
+  .sidebar-primary {
+    display: none !important;
+  }
+  
+  main {
+    padding: 16px 16px 80px 16px !important; /* Margem simétrica lateral e folga inferior */
+  }
+
+  .quality-card {
+    padding: 16px;
+  }
+
+  /* --- [Seção] Barra de Navegação Móvel Ergonômica --- */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: var(--surface);
+    border-top: 3px solid var(--border);
+    z-index: 150;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+    transition: background var(--transition), border var(--transition);
+  }
+
+  .mobile-nav__btn {
+    background: none;
+    border: none;
+    color: var(--text3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    opacity: 0.75;
+    flex: 1;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: color var(--transition), opacity var(--transition);
+  }
+
+  .mobile-nav__btn i {
+    font-size: 18px;
+  }
+
+  .mobile-nav__btn span {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .mobile-nav__btn.active {
+    opacity: 1;
+    color: var(--primary);
+  }
+
+  /* --- [Seção] Drawer adaptado para Bottom Sheet no Mobile --- */
+  .drawer {
+    top: auto;
+    bottom: -100%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 85%;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+    padding: 16px 20px; /* Reduzido o padding lateral para otimizar espaço de leitura */
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+    transition: bottom var(--transition), background var(--transition), border var(--transition);
+  }
+
+  /* Oculta fio vertical e bolinhas conectoras no mobile para aproveitar espaço horizontal */
+  .roadmap::before {
+    display: none !important;
+  }
+
+  .roadmap {
+    padding-left: 0 !important;
+  }
+
+  .roadmap__item {
+    gap: 0 !important;
+  }
+
+  .roadmap__status {
+    display: none !important;
+  }
+
+  /* Ocultação defensiva do texto "Acessar Ficha" nos botões internos dos cards do mapa no mobile */
+  .objective-card__indicator-btn-text {
+    display: none !important;
+  }
+
+  .objective-card__indicator-btn {
+    padding: 6px 8px !important; /* Visual compacto estilo pílula circular */
+  }
+
+  .objective-card__indicator-btn i {
+    font-size: 11px !important;
+  }
+
+  .objective-card__indicator-row {
+    padding: 10px 16px !important;
+  }
+
+  .objective-card__body {
+    padding: 16px 16px 12px 16px !important;
+  }
+
+  /* SUPRESSÃO DE RECUOS NESTED NO MOBILE: Destrava a largura máxima útil de leitura */
+  .bsc-panel {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    gap: 16px !important;
+  }
+
+  .bsc-perspective {
+    padding: 12px 10px !important; /* Reduz o padding lateral de 16px para 10px */
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.4; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+/* Suporte de Transição GSAP */
+.anim {
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* === [ESTILO ADICIONAL] BADGES DE CONTAGEM (OPÇÃO A) === */
+.objective-card__badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text2);
+  background-color: var(--bg);
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+  text-transform: none; /* Previne a capitalização forçada herdada de __num */
+  letter-spacing: normal;
+  vertical-align: middle;
+  transition: background var(--transition), color var(--transition);
+}
+
+[data-theme="dark"] .objective-card__badge {
+  background-color: var(--surface2);
+  color: var(--text3);
+}
+
+/* Transições no hover do cartão para destacar a badge */
+.objective-card:hover .objective-card__badge {
+  background-color: var(--primary-faded);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .objective-card:hover .objective-card__badge {
+  background-color: var(--primary);
+  color: #0F172A;
+}
+
+
+/* === [ESTILO ADICIONAL] NAVEGAÇÃO DE ÂNCORA STICKY NO DRAWER (OPÇÃO C) === */
+.tech-sheet__nav {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  padding: 12px 0;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 10;
+  transition: background var(--transition), border var(--transition);
+}
+
+.tech-sheet__nav-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition);
+}
+
+.tech-sheet__nav-btn:hover {
+  background: var(--primary-faded);
+  color: var(--primary);
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .tech-sheet__nav-btn {
+  background: var(--surface2);
+  color: var(--text3);
+}
+
+[data-theme="dark"] .tech-sheet__nav-btn:hover {
+  background: var(--primary-faded);
+  color: var(--primary-light);
+  border-color: var(--primary);
+}

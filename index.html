@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plano Tático SAU – TSE</title>
+  <!-- Google Fonts - Source Sans 3 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome para ícones consistentes com o projeto de referência -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- Bibliotecas externas de apoio -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- === [CABEÇALHO] INSTITUCIONAL === -->
+  <header>
+    <div class="header-brand">
+      <div class="header-seal">
+        <img src="logo-tse.png" alt="Logo TSE" class="header-seal-img">
+      </div>
+      <div class="header-text">
+        <h1>Secretaria de Auditoria</h1>
+        <p>Tribunal Superior Eleitoral</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+        <i class="fa-solid fa-circle-half-stroke" id="theme-icon"></i>
+        <span id="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- === [ESTRUTURA] SPA CENTRALIZADA === -->
+  <div class="app-body">
+    
+    <!-- Barra Lateral Primária: Abas da SPA -->
+    <nav class="sidebar-primary" role="navigation" aria-label="Menu Principal">
+      <div class="sidebar-label">Plano Tático</div>
+      <div class="process-list">
+        <button class="audit-tab active" data-tab="apresentacao" onclick="switchTab('apresentacao')">Apresentação</button>
+        <button class="audit-tab" data-tab="identidade" onclick="switchTab('identidade')">Identidade</button>
+        <button class="audit-tab" data-tab="mapa" onclick="switchTab('mapa')">Mapa Tático</button>
+        <button class="audit-tab" data-tab="qualidade" onclick="switchTab('qualidade')">Maturidade & Qualidade</button>
+      </div>
+    </nav>
+
+    <!-- Área de Conteúdo Ativo -->
+    <main id="main-area" role="main">
+
+      <!-- --- [Aba] Apresentação --- -->
+      <section id="apresentacao" class="tab-content active">
+        <div class="intro-block anim">
+          <h2 class="section-title">Plano Tático</h2>
+          <p class="section-paragraph">
+            A Secretaria de Auditoria (SAU) apresenta o seu <strong>Plano Tático</strong> para o ciclo 2026-2029, estruturado com foco no fortalecimento dos controles e no assessoramento estratégico à alta administração. Na condição de unidade técnica independente, a SAU posiciona-se como <strong>Terceira Linha de Defesa</strong>, zelando pela economicidade, eficiência, eficácia e efetividade no uso dos recursos públicos sob a guarda do TSE.
+          </p>
+          
+          <div class="adaptability-card">
+            <div class="adaptability-card__icon-wrapper">
+              <i class="fa-solid fa-circle-info adaptability-card__icon"></i>
+            </div>
+            <div class="adaptability-card__text">
+              <h4 class="adaptability-card__title">Relação com Plano Estratégico do TSE</h4>
+              <p class="adaptability-card__paragraph">
+                Este Plano Tático encontra-se referenciado e alinhado aos macrodesafios estabelecidos no Plano Estratégico do TSE 2021-2026. Registra-se que, por ocasião da homologação oficial do novo Plano Estratégico do TSE para o ciclo subsequente (atualmente em fase de elaboração), o Plano Tático atual será objeto de harmonização técnica pela unidade.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagram-block anim anim-d2">
+          <h3 class="subsection-title">Alinhamento Tático-Estratégico</h3>
+          <p class="section-paragraph">A atuação da SAU se conecta e suporta os macrodesafios do plano institucional do TSE:</p>
+          
+          <div class="cascade-diagram">
+            <div class="cascade-diagram__step">
+              <div class="cascade-diagram__label">Nível Estratégico (TSE 2021-2026)</div>
+              <div class="cascade-diagram__card tse-card">
+                <i class="fa-solid fa-shield-halved cascade-diagram__card-icon"></i>
+                <span>Aprimorar a Governança Institucional</span>
+              </div>
+            </div>
+            <div class="cascade-diagram__arrow">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="cascade-diagram__step">
+              <div class="cascade-diagram__label">Nível Tático (SAU 2026-2029)</div>
+              
+              <!-- Objetivo 1: Resultados (Roxo) -->
+              <div class="cascade-diagram__card cascade-diagram__card--resultados">
+                <i class="fa-solid fa-award cascade-diagram__card-icon"></i>
+                <div class="cascade-diagram__card-text">
+                  <span class="cascade-diagram__card-tag">Perspectiva Resultados</span>
+                  <span>1. Contribuir para a Governança, a Gestão de Riscos e os Controles Internos no Tribunal</span>
+                </div>
+              </div>
+
+              <!-- Objetivos 2, 3 e 4: Processos Internos (Azul) -->
+              <div class="cascade-diagram__card cascade-diagram__card--processos">
+                <i class="fa-solid fa-sitemap cascade-diagram__card-icon"></i>
+                <div class="cascade-diagram__card-text">
+                  <span class="cascade-diagram__card-tag">Perspectiva Processos Internos</span>
+                  <span>2. Aprimorar os processos de auditoria interna</span>
+                </div>
+              </div>
+
+              <div class="cascade-diagram__card cascade-diagram__card--processos">
+                <i class="fa-solid fa-sitemap cascade-diagram__card-icon"></i>
+                <div class="cascade-diagram__card-text">
+                  <span class="cascade-diagram__card-tag">Perspectiva Processos Internos</span>
+                  <span>3. Aprimorar a qualidade dos trabalhos da SAU</span>
+                </div>
+              </div>
+
+              <div class="cascade-diagram__card cascade-diagram__card--processos">
+                <i class="fa-solid fa-sitemap cascade-diagram__card-icon"></i>
+                <div class="cascade-diagram__card-text">
+                  <span class="cascade-diagram__card-tag">Perspectiva Processos Internos</span>
+                  <span>4. Aprimorar a comunicação com as unidades clientes da auditoria</span>
+                </div>
+              </div>
+
+              <!-- Objetivos 5 e 6: Aprendizado e Crescimento (Laranja) -->
+              <div class="cascade-diagram__card cascade-diagram__card--aprendizado">
+                <i class="fa-solid fa-graduation-cap cascade-diagram__card-icon"></i>
+                <div class="cascade-diagram__card-text">
+                  <span class="cascade-diagram__card-tag">Perspectiva Aprendizado & Crescimento</span>
+                  <span>5. Implementar o uso de tecnologias para automação de processos de trabalho da SAU</span>
+                </div>
+              </div>
+
+              <div class="cascade-diagram__card cascade-diagram__card--aprendizado">
+                <i class="fa-solid fa-graduation-cap cascade-diagram__card-icon"></i>
+                <div class="cascade-diagram__card-text">
+                  <span class="cascade-diagram__card-tag">Perspectiva Aprendizado & Crescimento</span>
+                  <span>6. Estimular o desenvolvimento profissional contínuo dos auditores da SAU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- [Aba] Identidade Organizacional --- -->
+      <section id="identidade" class="tab-content">
+        <h2 class="section-title">Identidade Institucional</h2>
+        <p class="section-paragraph">Declaração formal dos pilares institucionais que norteiam os trabalhos de auditoria interna e de consultoria no TSE.</p>
+        
+        <div class="identity-grid">
+          <div class="identity-card identity-card--primary">
+            <div class="identity-card__header">
+              <i class="fa-solid fa-bullseye identity-card__icon"></i>
+              <h3 class="identity-card__title">Missão</h3>
+            </div>
+            <p class="identity-card__text">
+              Aumentar e proteger o valor organizacional, auxiliando a gestão a alcançar os seus objetivos, com a adoção de abordagem sistemática para a avaliação e melhoria da eficácia, eficiência, efetividade e economicidade dos processos de governança corporativa, de gestão, de gerenciamento de riscos e de controle, de forma a contribuir para a boa e regular utilização aos recursos públicos sob sua guarda.
+            </p>
+          </div>
+
+          <div class="identity-card identity-card--primary">
+            <div class="identity-card__header">
+              <i class="fa-solid fa-eye identity-card__icon"></i>
+              <h3 class="identity-card__title">Visão</h3>
+            </div>
+            <p class="identity-card__text">
+              Ser referência em auditoria interna governamental, reconhecida como parceira estratégica da governança, agregando valor público e assegurando a proteção do TSE, contribuindo para a confiabilidade dos processos eleitorais, por meio de práticas alinhadas a padrões internacionais.
+            </p>
+          </div>
+
+          <div class="identity-card identity-card--primary">
+            <div class="identity-card__header">
+              <i class="fa-solid fa-scale-balanced identity-card__icon"></i>
+              <h3 class="identity-card__title">Valores</h3>
+            </div>
+            <ul class="identity-card__list">
+              <li>
+                <span class="identity-card__number">1</span>
+                <span class="identity-card__value-name">Independência:</span>
+                <span class="identity-card__value-desc">Atuação técnica isenta e autônoma.</span>
+              </li>
+              <li>
+                <span class="identity-card__number">2</span>
+                <span class="identity-card__value-name">Integridade:</span>
+                <span class="identity-card__value-desc">Respeito às normas profissionais.</span>
+              </li>
+              <li>
+                <span class="identity-card__number">3</span>
+                <span class="identity-card__value-name">Ética:</span>
+                <span class="identity-card__value-desc">Retidão e conduta ilibada.</span>
+              </li>
+              <li>
+                <span class="identity-card__number">4</span>
+                <span class="identity-card__value-name">Objetividade:</span>
+                <span class="identity-card__value-desc">Foco em fatos obtidos de forma empírica.</span>
+              </li>
+              <li>
+                <span class="identity-card__number">5</span>
+                <span class="identity-card__value-name">Melhoria Contínua:</span>
+                <span class="identity-card__value-desc">Fomento à busca constante por excelência.</span>
+              </li>
+              <li>
+                <span class="identity-card__number">6</span>
+                <span class="identity-card__value-name">Imparcialidade:</span>
+                <span class="identity-card__value-desc">Julgamento baseado estritamente nas evidências.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- [Aba] Mapa Estratégico --- -->
+      <section id="mapa" class="tab-content">
+        <div class="map-header">
+          <h2 class="section-title">Mapa Tático</h2>
+          <p class="section-paragraph">Visualize todos os objetivos e indicadores em tela única. Use o botão <strong>Acessar Ficha</strong> para abrir os detalhes técnicos na gaveta lateral.</p>
+        </div>
+
+        <div class="bsc-panel">
+          <!-- Perspectiva: Resultados -->
+          <div class="bsc-perspective">
+            <div class="bsc-perspective__title bsc-perspective__title--resultados">
+              <i class="fa-solid fa-award"></i>
+              <span>Perspectiva de Resultados</span>
+            </div>
+            <div class="bsc-perspective__objectives">
+              <div class="objective-card">
+                <div class="objective-card__body">
+                  <div class="objective-card__header">
+                    <span class="objective-card__num">OT 01 <span class="objective-card__badge">2 Indicadores</span></span>
+                    <i class="fa-solid fa-award objective-card__icon"></i>
+                  </div>
+                  <p class="objective-card__text">Contribuir para a governança, a gestão de riscos e os controles internos</p>
+                </div>
+                <div class="objective-card__divider"></div>
+                <div class="objective-card__indicators-list">
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj1', 0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj1', 0)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 1.1 - Cumprimento do Plano de Auditoria</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj1', 1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj1', 1)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 1.2 - Implementação de Recomendações</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Perspectiva: Processos Internos -->
+          <div class="bsc-perspective">
+            <div class="bsc-perspective__title bsc-perspective__title--processos">
+              <i class="fa-solid fa-sitemap"></i>
+              <span>Perspectiva de Processos Internos</span>
+            </div>
+            <div class="bsc-perspective__objectives bsc-perspective__objectives--grid">
+              
+              <!-- Objetivo 2: PAQ-AUD -->
+              <div class="objective-card">
+                <div class="objective-card__body">
+                  <div class="objective-card__header">
+                    <span class="objective-card__num">OT 02 <span class="objective-card__badge">5 Indicadores</span></span>
+                    <i class="fa-solid fa-shield-halved objective-card__icon"></i>
+                  </div>
+                  <p class="objective-card__text">Consolidar as avaliações do PAQ-AUD (Programa de Avaliação de Qualidade da Auditoria Interna)</p>
+                </div>
+                <div class="objective-card__divider"></div>
+                <div class="objective-card__indicators-list">
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj2', 0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj2', 0)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 2.1 - Avaliação Contínua de Auditorias</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj2', 1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj2', 1)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 2.2 - Avaliação Contínua de Consultorias</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj2', 2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj2', 2)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 2.3 - Avaliação Contínua de Auditorias Integradas</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj2', 3)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj2', 3)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 2.4 - Avaliação Periódica da Alta Administração</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj2', 4)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj2', 4)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 2.5 - Avaliação Periódica do IA-CM</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Objetivo 3: Processos da SAU -->
+              <div class="objective-card">
+                <div class="objective-card__body">
+                  <div class="objective-card__header">
+                    <span class="objective-card__num">OT 03 <span class="objective-card__badge">5 Indicadores</span></span>
+                    <i class="fa-solid fa-sitemap objective-card__icon"></i>
+                  </div>
+                  <p class="objective-card__text">Aprimorar a qualidade dos processos de trabalho da SAU</p>
+                </div>
+                <div class="objective-card__divider"></div>
+                <div class="objective-card__indicators-list">
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj3', 0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj3', 0)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 3.1 - Mapeamento dos processos de auditoria interna</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj3', 1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj3', 1)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 3.2 - Padronização dos papéis de trabalho e documentação afim</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj3', 2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj3', 2)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 3.3 - Institucionalização dos KPAs do IA-CM</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj3', 3)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj3', 3)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 3.4 - Aperfeiçoamento da comunicação com clientes</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj3', 4)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj3', 4)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 3.5 - Inovação tecnológica quanto a gestão de dados e automatização</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Perspectiva: Aprendizado e Crescimento -->
+          <div class="bsc-perspective">
+            <div class="bsc-perspective__title bsc-perspective__title--aprendizado">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>Perspectiva de Aprendizado e Crescimento</span>
+            </div>
+            <div class="bsc-perspective__objectives bsc-perspective__objectives--grid-two">
+              <div class="objective-card">
+                <div class="objective-card__body">
+                  <div class="objective-card__header">
+                    <span class="objective-card__num">OT 04 <span class="objective-card__badge">2 Indicadores</span></span>
+                    <i class="fa-solid fa-graduation-cap objective-card__icon"></i>
+                  </div>
+                  <p class="objective-card__text">Estimular o desenvolvimento de competências profissionais</p>
+                </div>
+                <div class="objective-card__divider"></div>
+                <div class="objective-card__indicators-list">
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj4', 0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj4', 0)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 4.1 - Horas de Capacitação por Servidor</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                  <div class="objective-card__indicator-row" onclick="openDrawerWithAnchor('obj4', 1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openDrawerWithAnchor('obj4', 1)">
+                    <span class="objective-card__indicator-dot"></span>
+                    <span class="objective-card__indicator-name">IT 4.2 - Redução dos GAPs de competências</span>
+                    <span class="objective-card__indicator-btn"><span class="objective-card__indicator-btn-text">Acessar Ficha</span> <i class="fa-solid fa-chevron-right"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- [Aba] Maturidade & Qualidade --- -->
+      <section id="qualidade" class="tab-content">
+        <h2 class="section-title">Indicadores de Maturidade</h2>
+        <p class="section-paragraph">Há dois pilares fundamentais de acompanhamento da capacidade institucional e do feedback de nossas partes interessadas.</p>
+
+        <div class="quality-grid">
+          <!-- Termômetro IA-CM -->
+          <div class="quality-card">
+            <div class="quality-card__header">
+              <i class="fa-solid fa-arrow-trend-up quality-card__icon"></i>
+              <h3 class="quality-card__title">Maturidade no IA-CM</h3>
+            </div>
+            <p class="quality-card__paragraph">
+              O modelo internacional IA-CM (Internal Audit Capability Model) classifica a auditoria em 5 níveis. A ascensão de nível é cumulativa e exige a institucionalização de todas as Áreas de Processo Chave (KPAs) do respectivo nível.
+            </p>
+            
+            <div class="roadmap">
+              <div class="roadmap__item completed">
+                <div class="roadmap__status">
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="roadmap__content">
+                  <h4 class="roadmap__title">Nível 1 - Inicial</h4>
+                  <p class="roadmap__text">Práticas de auditoria ad-hoc, sem processos formais padronizados. (Conquistado)</p>
+                </div>
+              </div>
+
+              <div class="roadmap__item active">
+                <div class="roadmap__status">
+                  <div class="roadmap__pulse"></div>
+                </div>
+                <div class="roadmap__content">
+                  <h4 class="roadmap__title">Nível 2 - Infraestrutura</h4>
+                  <p class="roadmap__text">Processos e práticas de auditoria sustentáveis e repetíveis. (Foco Atual)</p>
+                  <div class="roadmap__progress-bar">
+                    <div class="roadmap__progress" style="width: 86%;">86%</div>
+                  </div>
+                  <span class="roadmap__meta-label">Meta: Alcançar 100% de institucionalização em 2027</span>
+                </div>
+              </div>
+
+              <div class="roadmap__item locked">
+                <div class="roadmap__status">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="roadmap__content">
+                  <h4 class="roadmap__title">Nível 3 - Integrado</h4>
+                  <p class="roadmap__text">Processos de auditoria integrados aos sistemas de gestão do Tribunal.</p>
+                </div>
+              </div>
+
+              <div class="roadmap__item locked">
+                <div class="roadmap__status">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="roadmap__content">
+                  <h4 class="roadmap__title">Nível 4 - Gerenciado</h4>
+                  <p class="roadmap__text">Métricas quantitativas de desempenho e processos sob controle estatístico.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instrumentos de Avaliação da Qualidade -->
+          <div class="quality-card">
+            <div class="quality-card__header">
+              <i class="fa-solid fa-list-check quality-card__icon"></i>
+              <h3 class="quality-card__title">Instrumentos do PAQ-AUD</h3>
+            </div>
+            <p class="quality-card__paragraph">
+              Os instrumentos de avaliação do Programa de Avaliação de Qualidade de Auditoria Interna são estruturados sob as diretrizes globais do <span>The Institute of Internal Auditors (IIA)</span> e do modelo de capacidade de auditoria interna <span>IA-CM</span>:
+            </p>
+            
+            <div class="dimensions-legend">
+              <div class="dimension-item">
+                <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
+                <div class="dimension-item__content">
+                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Auditorias Internas</span>
+                </div>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
+                <div class="dimension-item__content">
+                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Consultorias</span>
+                </div>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
+                <div class="dimension-item__content">
+                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Auditorias Integradas</span>
+                </div>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
+                <div class="dimension-item__content">
+                  <span class="dimension-item__name">Questionário de Avaliação Periódica pela Alta Administração</span>
+                </div>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
+                <div class="dimension-item__content">
+                  <span class="dimension-item__name">Planilha de Autoavaliação do IA-CM | Validação Externa por Par</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- === [DRAWER / FICHA TÉCNICA LATERAL] === -->
+  <div id="drawerOverlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+  <div id="drawer" class="drawer">
+    <button id="drawerClose" class="drawer__close-btn" onclick="closeDrawer()" aria-label="Fechar ficha técnica">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="drawer__content" id="drawerContent"></div>
+  </div>
+
+  <!-- === [NAVEGAÇÃO MOBILE BOTTOM BAR] === -->
+  <nav class="mobile-nav mobile-only" role="navigation" aria-label="Menu Mobile">
+    <button class="mobile-nav__btn active" data-tab="apresentacao" onclick="switchTab('apresentacao')">
+      <i class="fa-solid fa-house"></i>
+      <span>Início</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="identidade" onclick="switchTab('identidade')">
+      <i class="fa-solid fa-bullseye"></i>
+      <span>Identidade</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="mapa" onclick="switchTab('mapa')">
+      <i class="fa-solid fa-network-wired"></i>
+      <span>Mapa</span>
+    </button>
+    <button class="mobile-nav__btn" data-tab="qualidade" onclick="switchTab('qualidade')">
+      <i class="fa-solid fa-arrow-trend-up"></i>
+      <span>Qualidade</span>
+    </button>
+  </nav>
+
+  <!-- Bibliotecas de suporte técnico -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
