@@ -44,7 +44,7 @@
         <button class="audit-tab active" data-tab="apresentacao" onclick="switchTab('apresentacao')">Apresentação</button>
         <button class="audit-tab" data-tab="identidade" onclick="switchTab('identidade')">Identidade</button>
         <button class="audit-tab" data-tab="mapa" onclick="switchTab('mapa')">Mapa Tático</button>
-        <button class="audit-tab" data-tab="qualidade" onclick="switchTab('qualidade')">Maturidade & Qualidade</button>
+        <button class="audit-tab" data-tab="qualidade" onclick="switchTab('qualidade')">Maturidade</button>
       </div>
     </nav>
 
@@ -449,34 +449,64 @@
             </p>
             
             <div class="dimensions-legend">
+              <!-- Auditoria Interna -->
               <div class="dimension-item">
                 <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
                 <div class="dimension-item__content">
-                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Auditorias Internas</span>
+                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Auditorias Internas:</span>
+                  <div class="dimension-item__sub-list">
+                    <span class="dimension-item__sub-tag">Unidade cliente</span>
+                    <span class="dimension-item__sub-tag">Gestor da unidade cliente</span>
+                    <span class="dimension-item__sub-tag">Equipe de auditoria</span>
+                    <span class="dimension-item__sub-tag">Coordenador do trabalho</span>
+                  </div>
                 </div>
               </div>
+              
+              <!-- Consultoria -->
               <div class="dimension-item">
                 <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
                 <div class="dimension-item__content">
-                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Consultorias</span>
+                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Consultorias:</span>
+                  <div class="dimension-item__sub-list">
+                    <span class="dimension-item__sub-tag">Unidade cliente</span>
+                    <span class="dimension-item__sub-tag">Gestor da unidade cliente</span>
+                    <span class="dimension-item__sub-tag">Equipe de consultoria</span>
+                    <span class="dimension-item__sub-tag">Coordenador do trabalho</span>
+                  </div>
                 </div>
               </div>
+
+              <!-- Auditoria Integrada -->
               <div class="dimension-item">
                 <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
                 <div class="dimension-item__content">
-                  <span class="dimension-item__name">Questionários de Avaliação Contínua de Auditorias Integradas</span>
+                  <span class="dimension-item__name">Questionários de Avaliação Contínua das Auditorias Integradas:</span>
+                  <div class="dimension-item__sub-list">
+                    <span class="dimension-item__sub-tag">Auditorias Internas dos TREs envolvidos</span>
+                    <span class="dimension-item__sub-tag">Equipe de auditoria</span>
+                    <span class="dimension-item__sub-tag">Coordenador do trabalho</span>
+                  </div>
                 </div>
               </div>
+
+              <!-- Alta Administração -->
               <div class="dimension-item">
                 <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
                 <div class="dimension-item__content">
                   <span class="dimension-item__name">Questionário de Avaliação Periódica pela Alta Administração</span>
                 </div>
               </div>
+
+              <!-- IA-CM -->
               <div class="dimension-item">
                 <span class="dimension-item__dot" style="background-color: var(--phase2);"></span>
                 <div class="dimension-item__content">
-                  <span class="dimension-item__name">Planilha de Autoavaliação do IA-CM | Validação Externa por Par</span>
+                  <span class="dimension-item__name">Avaliação do IA-CM:</span>
+                  <div class="dimension-item__sub-list">
+                    <span class="dimension-item__sub-tag">Autoavaliação pela SAU</span>
+                    <span class="dimension-item__sub-tag">Validação externa por par</span>
+                  </div>
                 </div>
               </div>
             </div>

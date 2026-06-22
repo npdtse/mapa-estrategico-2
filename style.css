@@ -1591,3 +1591,46 @@ main {
   color: var(--primary-light);
   border-color: var(--primary);
 }
+
+/* === [ESTILO ADICIONAL] PILULAS DE SUBTÓPICOS DE INSTRUMENTOS === */
+
+.dimension-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.dimension-item__sub-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.dimension-item__sub-tag {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--bg2);
+  color: var(--text2);
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  transition: background var(--transition), color var(--transition);
+}
+
+[data-theme="dark"] .dimension-item__sub-tag {
+  background: var(--surface2);
+  color: var(--text3);
+}
+
+/* Efeito Hover: Acendimento sutil e unificado das pílulas na cor da marca */
+.dimension-item:hover .dimension-item__sub-tag {
+  background: var(--primary-faded);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .dimension-item:hover .dimension-item__sub-tag {
+  background: rgba(51, 153, 255, 0.15);
+  color: var(--primary-light);
+}
